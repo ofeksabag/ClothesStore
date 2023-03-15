@@ -190,7 +190,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"productId\": 5,\r\n    \"cartId\": 2,\r\n    \"amount\": 5\r\n}",
+							"raw": "{\r\n    \"productId\": 2,\r\n    \"cartId\": 1,\r\n    \"amount\": 4\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -207,6 +207,36 @@
 							"path": [
 								"api",
 								"cartItems"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update cart item",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": 2,\r\n    \"cartId\": 1,\r\n    \"amount\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/cartItems/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"cartItems",
+								"2"
 							]
 						}
 					},
@@ -239,7 +269,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:4000/api/cartItems/2",
+							"raw": "http://localhost:4000/api/cartItems/8",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -248,7 +278,36 @@
 							"path": [
 								"api",
 								"cartItems",
-								"2"
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userId\": 4,\r\n    \"cartId\": 2,\r\n    \"totalPrice\": 100,\r\n    \"city\": \"Ashqelon\",\r\n    \"address\": \"Some 2\",\r\n    \"house\": 10,\r\n    \"zipCode\": 112322,\r\n    \"orderDate\": \"2000-02-10\",\r\n    \"lastDigits\": 1212\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"orders"
 							]
 						}
 					},
@@ -626,6 +685,36 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Add discount",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": 3,\r\n    \"discount\": 100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/admin/discounts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"admin",
+								"discounts"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}
@@ -635,7 +724,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJJZCI6NCwiZmlyc3ROYW1lIjoiTWVuYXNoZSIsImxhc3ROYW1lIjoiS2FkaXNobWFuIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJyb2xlIjozLCJjaXR5IjoiVGVsIEF2aXYiLCJhZGRyZXNzIjoiU2VzYW1lIHN0cmVldCIsImhvdXNlIjoxLCJ6aXBjb2RlIjo4ODQ3MzY0N30sImlhdCI6MTY3ODY1NzMyMSwiZXhwIjoxNjc4NjY4MTIxfQ.UXgRJ9DypEGExjHqkelpNEd7eCMMkZEueEVeAGsQqRI",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJJZCI6NCwiZmlyc3ROYW1lIjoiTWVuYXNoZSIsImxhc3ROYW1lIjoiS2FkaXNobWFuIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJyb2xlIjozLCJjaXR5IjoiVGVsIEF2aXYiLCJhZGRyZXNzIjoiU2VzYW1lIHN0cmVldCIsImhvdXNlIjoxLCJ6aXBjb2RlIjo4ODQ3MzY0N30sImlhdCI6MTY3ODkxNzczNiwiZXhwIjoxNjc4OTI4NTM2fQ.BM2hxqTXvf7C69TCUyyM91IW5aNxfPYfPc0rpEPMFQI",
 				"type": "string"
 			}
 		]

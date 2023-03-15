@@ -1,6 +1,7 @@
 import express, { Request, Response, NextFunction } from "express";
 import CartModel from "../4-models/cart-model";
 import CartItemsModel from "../4-models/cartItems-model";
+import OrderModel from "../4-models/order-model";
 import productService from "../5-services/product-service";
 
 const router = express.Router();
@@ -79,6 +80,18 @@ router.post("/cartItems", async (request: Request, response: Response, next: Nex
         const cartItem = new CartItemsModel(request.body);
         const addedCartItem = await productService.addCartItem(cartItem);
         response.status(201).json(addedCartItem);
+    }
+    catch(err: any) {
+        next(err);
+    }
+});
+
+// POST http://localhost:4000/api/orders
+router.post("/orders", async (request: Request, response: Response, next: NextFunction) => {
+    try {
+        const order = new OrderModel(request.body);
+        const addedOrder = await productService.addOrder(order);
+        response.status(201).json(addedOrder);
     }
     catch(err: any) {
         next(err);

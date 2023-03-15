@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2023 at 10:54 PM
+-- Generation Time: Mar 15, 2023 at 11:27 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -125,7 +125,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cartId`, `userId`, `date`) VALUES
-(1, 4, '2023-03-15');
+(2, 4, '2023-03-16');
 
 -- --------------------------------------------------------
 
@@ -145,9 +145,7 @@ CREATE TABLE `cartitems` (
 --
 
 INSERT INTO `cartitems` (`itemId`, `productId`, `cartId`, `amount`) VALUES
-(7, 2, 1, 2),
-(8, 2, 1, 4),
-(9, 2, 1, 4);
+(10, 3, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -173,6 +171,25 @@ INSERT INTO `category` (`categoryId`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `discounts`
+--
+
+CREATE TABLE `discounts` (
+  `discountId` int(11) NOT NULL,
+  `productId` int(11) NOT NULL,
+  `discount` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `discounts`
+--
+
+INSERT INTO `discounts` (`discountId`, `productId`, `discount`) VALUES
+(1, 3, 10);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `orders`
 --
 
@@ -194,7 +211,7 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`orderId`, `userId`, `cartId`, `totalPrice`, `city`, `address`, `house`, `zipcode`, `orderDate`, `lastDigits`) VALUES
-(1, 4, 1, '500.00', 'tel hai', 'tel masho 5', 2, 44392, '2023-03-15', 9685);
+(2, 4, 2, '50.00', 'tel aviv', 'sumsum 5', 1, 88372, '2023-03-16', 9948);
 
 -- --------------------------------------------------------
 
@@ -218,7 +235,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`productId`, `brandId`, `categoryId`, `subcategoryId`, `name`, `description`, `price`, `imageUrl`) VALUES
-(2, 1, 3, 48, 'blahblah', 'jijiejfie efijewifjewif', '50.00', '');
+(3, 2, 1, 3, 'Test', 'This is test', '5.00', 'bb7e2f6b-5fd6-4f5c-b521-c8b8fd68bfe4.JPG');
 
 -- --------------------------------------------------------
 
@@ -337,7 +354,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userId`, `firstName`, `lastName`, `email`, `password`, `role`, `city`, `address`, `house`, `zipcode`) VALUES
-(4, 'Menashe', 'Kadishman', 'admin@gmail.com', 'e5a90c351f38ff167d226e1a64797f935baf5efdc6d2ae6af2bf916b71a8719064c76b287c8ee2c7c28531c6737f73ac64d7b3ad5ca53b9f8e96d5de388e883b', 1, 'Tel Aviv', 'Sesame street', 1, 88473647);
+(4, 'Menashe', 'Kadishman', 'admin@gmail.com', 'e5a90c351f38ff167d226e1a64797f935baf5efdc6d2ae6af2bf916b71a8719064c76b287c8ee2c7c28531c6737f73ac64d7b3ad5ca53b9f8e96d5de388e883b', 3, 'Tel Aviv', 'Sesame street', 1, 88473647);
 
 --
 -- Indexes for dumped tables
@@ -369,6 +386,13 @@ ALTER TABLE `cartitems`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`categoryId`);
+
+--
+-- Indexes for table `discounts`
+--
+ALTER TABLE `discounts`
+  ADD PRIMARY KEY (`discountId`),
+  ADD KEY `productId` (`productId`);
 
 --
 -- Indexes for table `orders`
@@ -414,13 +438,13 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `cartitems`
 --
 ALTER TABLE `cartitems`
-  MODIFY `itemId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `itemId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -429,16 +453,22 @@ ALTER TABLE `category`
   MODIFY `categoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `discounts`
+--
+ALTER TABLE `discounts`
+  MODIFY `discountId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `subcategory`
@@ -468,6 +498,12 @@ ALTER TABLE `cart`
 ALTER TABLE `cartitems`
   ADD CONSTRAINT `cartitems_ibfk_1` FOREIGN KEY (`cartId`) REFERENCES `cart` (`cartId`),
   ADD CONSTRAINT `cartitems_ibfk_2` FOREIGN KEY (`productId`) REFERENCES `products` (`productId`);
+
+--
+-- Constraints for table `discounts`
+--
+ALTER TABLE `discounts`
+  ADD CONSTRAINT `discounts_ibfk_1` FOREIGN KEY (`productId`) REFERENCES `products` (`productId`);
 
 --
 -- Constraints for table `orders`

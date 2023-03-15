@@ -41,7 +41,7 @@ async function getUserCartItems(userId: number): Promise<CartItemsModel[]> {
 
 async function addCart(cart: CartModel): Promise<CartModel> {
     cart.validate();
-    const sql = "INSERT INTO cart values(DEFAULT, ?, ?)";
+    const sql = "INSERT INTO cart VALUES(DEFAULT, ?, ?)";
     const result: OkPacket = await dal.execute(sql, cart.userId, cart.date);
     cart.cartId = result.insertId;
     return cart;
@@ -49,10 +49,18 @@ async function addCart(cart: CartModel): Promise<CartModel> {
 
 async function addCartItem(cartItem: CartItemsModel): Promise<CartItemsModel> {
     cartItem.validate();
-    const sql = "INSERT INTO cartItems values(DEFAULT, ?, ?, ?)";
+    const sql = "INSERT INTO cartItems VALUES(DEFAULT, ?, ?, ?)";
     const result: OkPacket = await dal.execute(sql, cartItem.productId, cartItem.cartId, cartItem.amount);
     cartItem.itemId = result.insertId;
     return cartItem;
+}
+
+async function addOrder(order: OrderModel): Promise<OrderModel> {
+    order.validate();
+    const sql = "INSERT INTO orders VALUES(DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    const result: OkPacket = await dal.execute(sql, order.userId, order.cartId, order.totalPrice, order.city, order.address, order.house, order.zipCode, order.orderDate, order.lastDigits);
+    order.orderId = result.insertId;
+    return order;
 }
 
 async function updateCartItem(cartItem: CartItemsModel): Promise<CartItemsModel> {
@@ -69,12 +77,6 @@ async function deleteCartItem(itemId: number): Promise<void> {
     if(result.affectedRows === 0) throw new ResourceNotFoundError(itemId);
 }
 
-/*
-async function addOrder(order: OrderModel): Promise<OrderModel> {
-
-}
-*/
-
 export default {
     getAllBrands,
     getAllCategories,
@@ -83,6 +85,7 @@ export default {
     getUserCartItems,
     addCart,
     addCartItem,
+    addOrder,
     updateCartItem,
     deleteCartItem
 }

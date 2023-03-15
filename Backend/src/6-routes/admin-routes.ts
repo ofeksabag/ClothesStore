@@ -2,6 +2,7 @@ import express, { Request, Response, NextFunction } from "express";
 import verifyAdmin from "../3-middleware/verify-admin";
 import BrandModel from "../4-models/brand-model";
 import CategoryModel from "../4-models/category-model";
+import DiscountModel from "../4-models/discount-model";
 import ProductModel from "../4-models/product-model";
 import SubcategoryModel from "../4-models/subcategory-model";
 import adminService from "../5-services/admin-service";
@@ -51,6 +52,18 @@ router.post("/admin/products", verifyAdmin, async (request: Request, response: R
         const product = new ProductModel(request.body);
         const addedProduct = await adminService.addProduct(product);
         response.status(201).json(addedProduct);
+    }
+    catch (err: any) {
+        next(err);
+    }
+});
+
+// POST http://localhost:4000/api/admin/discounts
+router.post("/admin/discounts", verifyAdmin, async (request: Request, response: Response, next: NextFunction) => {
+    try {
+        const discount = new DiscountModel(request.body);
+        const addedDiscount = await adminService.addDiscount(discount);
+        response.status(201).json(addedDiscount);
     }
     catch (err: any) {
         next(err);

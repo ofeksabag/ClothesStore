@@ -5,6 +5,7 @@ import imageHandler from "../2-utils/image-handler";
 import BrandModel from "../4-models/brand-model";
 import CategoryModel from "../4-models/category-model";
 import { ResourceNotFoundError } from "../4-models/client-errors";
+import DiscountModel from "../4-models/discount-model";
 import ProductModel from "../4-models/product-model";
 import SubcategoryModel from "../4-models/subcategory-model";
 
@@ -40,6 +41,14 @@ async function addProduct(product: ProductModel): Promise<ProductModel> {
     product.productId = result.insertId;
     delete product.image;
     return product;
+}
+
+async function addDiscount(discount: DiscountModel): Promise<DiscountModel> {
+    discount.validate();
+    const sql = "INSERT INTO discounts VALUES(DEFAULT, ?, ?)";
+    const result: OkPacket = await dal.execute(sql, discount.productId, discount.discount);
+    discount.discountId = result.insertId;
+    return discount;
 }
 
 async function updateProduct(product: ProductModel): Promise<ProductModel> {
@@ -93,6 +102,7 @@ export default {
     addSubcategory,
     deleteSubcategory,
     addProduct,
+    addDiscount,
     updateProduct,
     deleteProduct
 }
