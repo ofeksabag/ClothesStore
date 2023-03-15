@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2023 at 01:08 PM
+-- Generation Time: Mar 15, 2023 at 10:54 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -120,6 +120,13 @@ CREATE TABLE `cart` (
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cartId`, `userId`, `date`) VALUES
+(1, 4, '2023-03-15');
+
 -- --------------------------------------------------------
 
 --
@@ -132,6 +139,15 @@ CREATE TABLE `cartitems` (
   `cartId` int(11) NOT NULL,
   `amount` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cartitems`
+--
+
+INSERT INTO `cartitems` (`itemId`, `productId`, `cartId`, `amount`) VALUES
+(7, 2, 1, 2),
+(8, 2, 1, 4),
+(9, 2, 1, 4);
 
 -- --------------------------------------------------------
 
@@ -173,6 +189,13 @@ CREATE TABLE `orders` (
   `lastDigits` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`orderId`, `userId`, `cartId`, `totalPrice`, `city`, `address`, `house`, `zipcode`, `orderDate`, `lastDigits`) VALUES
+(1, 4, 1, '500.00', 'tel hai', 'tel masho 5', 2, 44392, '2023-03-15', 9685);
+
 -- --------------------------------------------------------
 
 --
@@ -189,6 +212,13 @@ CREATE TABLE `products` (
   `price` decimal(5,2) NOT NULL,
   `imageUrl` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`productId`, `brandId`, `categoryId`, `subcategoryId`, `name`, `description`, `price`, `imageUrl`) VALUES
+(2, 1, 3, 48, 'blahblah', 'jijiejfie efijewifjewif', '50.00', '');
 
 -- --------------------------------------------------------
 
@@ -384,13 +414,13 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cartId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cartitems`
 --
 ALTER TABLE `cartitems`
-  MODIFY `itemId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `itemId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -402,13 +432,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `subcategory`
@@ -436,8 +466,8 @@ ALTER TABLE `cart`
 -- Constraints for table `cartitems`
 --
 ALTER TABLE `cartitems`
-  ADD CONSTRAINT `cartitems_ibfk_1` FOREIGN KEY (`productId`) REFERENCES `products` (`productId`),
-  ADD CONSTRAINT `cartitems_ibfk_2` FOREIGN KEY (`cartId`) REFERENCES `cart` (`cartId`);
+  ADD CONSTRAINT `cartitems_ibfk_1` FOREIGN KEY (`cartId`) REFERENCES `cart` (`cartId`),
+  ADD CONSTRAINT `cartitems_ibfk_2` FOREIGN KEY (`productId`) REFERENCES `products` (`productId`);
 
 --
 -- Constraints for table `orders`
@@ -450,9 +480,9 @@ ALTER TABLE `orders`
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`subcategoryId`) REFERENCES `subcategory` (`subcategoryId`),
+  ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`categoryId`) REFERENCES `category` (`categoryId`),
   ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`brandId`) REFERENCES `brands` (`brandId`),
-  ADD CONSTRAINT `products_ibfk_3` FOREIGN KEY (`categoryId`) REFERENCES `category` (`categoryId`);
+  ADD CONSTRAINT `products_ibfk_3` FOREIGN KEY (`subcategoryId`) REFERENCES `subcategory` (`subcategoryId`);
 
 --
 -- Constraints for table `subcategory`
