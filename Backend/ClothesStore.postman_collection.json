@@ -717,6 +717,127 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Website",
+			"item": [
+				{
+					"name": "Get website name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/website/websiteName",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"website",
+								"websiteName"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get website description",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/website/websiteDescription",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"website",
+								"websiteDescription"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get theme color",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/website/themeColor",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"website",
+								"themeColor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Header line",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/website/headerLine",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"website",
+								"headerLine"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update general settings",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"websiteName\": \"Frenzy Brands\",\r\n    \"websiteDescription\": \"בוטיק \\\"Frenzy Brands\\\" מספק מגוון רחב של מותגי על בינלאומיים מקוריים בלבד.\",\r\n    \"themeColor\": \"#f2f2f2\",\r\n    \"headerLine\": \"✨ חדש! ✨ קטלוג קיץ 2023 עלה לאתר!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/admin/website/generalSettings/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"admin",
+								"website",
+								"generalSettings",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"auth": {
@@ -724,7 +845,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJJZCI6NCwiZmlyc3ROYW1lIjoiTWVuYXNoZSIsImxhc3ROYW1lIjoiS2FkaXNobWFuIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJyb2xlIjozLCJjaXR5IjoiVGVsIEF2aXYiLCJhZGRyZXNzIjoiU2VzYW1lIHN0cmVldCIsImhvdXNlIjoxLCJ6aXBjb2RlIjo4ODQ3MzY0N30sImlhdCI6MTY3ODkxNzczNiwiZXhwIjoxNjc4OTI4NTM2fQ.BM2hxqTXvf7C69TCUyyM91IW5aNxfPYfPc0rpEPMFQI",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7InVzZXJJZCI6NCwiZmlyc3ROYW1lIjoiTWVuYXNoZSIsImxhc3ROYW1lIjoiS2FkaXNobWFuIiwiZW1haWwiOiJhZG1pbkBnbWFpbC5jb20iLCJyb2xlIjozLCJjaXR5IjoiVGVsIEF2aXYiLCJhZGRyZXNzIjoiU2VzYW1lIHN0cmVldCIsImhvdXNlIjoxLCJ6aXBjb2RlIjo4ODQ3MzY0N30sImlhdCI6MTY3OTc2MTY4MSwiZXhwIjoxNjc5NzcyNDgxfQ.WXnAkzjbbfjpk_IB7fe3Kbe_7gaBQ43W11RO3vBxF5Y",
 				"type": "string"
 			}
 		]

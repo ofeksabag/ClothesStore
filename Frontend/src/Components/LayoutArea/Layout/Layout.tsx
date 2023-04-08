@@ -15,8 +15,6 @@ function Layout(): JSX.Element {
                 <Menu />
             </nav>
 
-            <hr />
-
             <main>
                 <Routing />
             </main>

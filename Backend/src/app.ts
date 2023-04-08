@@ -7,6 +7,7 @@ import routeNotFound from "./3-middleware/route-not-found";
 import authRoutes from "./6-routes/auth-routes";
 import productRoutes from "./6-routes/product-routes";
 import adminRoutes from "./6-routes/admin-routes";
+import websiteRoutes from "./6-routes/website-routes";
 
 const server = express();
 
@@ -17,6 +18,7 @@ server.use(expressFileUploaded());
 server.use("/api", authRoutes);
 server.use("/api", productRoutes);
 server.use("/api", adminRoutes);
+server.use("/api", websiteRoutes);
 
 server.use("*", routeNotFound);
 server.use(catchAll);

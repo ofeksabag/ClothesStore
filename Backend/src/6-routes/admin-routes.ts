@@ -3,6 +3,7 @@ import verifyAdmin from "../3-middleware/verify-admin";
 import BrandModel from "../4-models/brand-model";
 import CategoryModel from "../4-models/category-model";
 import DiscountModel from "../4-models/discount-model";
+import GeneralSettings from "../4-models/general-settings-model";
 import ProductModel from "../4-models/product-model";
 import SubcategoryModel from "../4-models/subcategory-model";
 import adminService from "../5-services/admin-service";
@@ -64,6 +65,19 @@ router.post("/admin/discounts", verifyAdmin, async (request: Request, response: 
         const discount = new DiscountModel(request.body);
         const addedDiscount = await adminService.addDiscount(discount);
         response.status(201).json(addedDiscount);
+    }
+    catch (err: any) {
+        next(err);
+    }
+});
+
+// PUT http://localhost:4000/api/admin/website/generalSettings/:layoutId
+router.put("/admin/website/generalSettings/:layoutId([0-9]+)", verifyAdmin, async (request: Request, response: Response, next: NextFunction) => {
+    try {
+        request.body.layoutId = +request.params.layoutId;
+        const generalSettings = new GeneralSettings(request.body);
+        const updatedGeneralSettings = await adminService.updateGeneralSettings(generalSettings);
+        response.status(200).json(updatedGeneralSettings);
     }
     catch (err: any) {
         next(err);

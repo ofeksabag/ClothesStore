@@ -1,3 +1,104 @@
 .Menu {
-	
+    font-family: 'Oswald', sans-serif;
+    margin: 0;
+    padding: 10px 0 15px 0;
+}
+
+.Menu a:first-child {
+    color: #000;
+}
+
+.Navbar {
+    display: flex;
+    justify-content: center;
+}
+
+.Navbar_Mobile {
+    display: none;
+}
+
+.Menu>.Navbar>a, .Menu>.Navbar>.Dropdown>a {
+    color: #000;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 20px;
+}
+
+.Menu:Hover {
+    background-color: #d9d5cd;
+}
+
+.Menu>.Navbar>a:Hover, .Menu>.Navbar>.Dropdown>a:hover {
+    text-decoration: underline 3px #8a7f68;
+}
+
+.Logo {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Logo>h1 {
+    margin: 0px;
+    padding: 0px;
+}
+
+.Logo a {
+    font-size: 50px;
+    text-decoration: underline;
+}
+
+.Bars {
+    display: none;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+.Tools {
+    display: flex;
+    margin-left: 20px;
+}
+
+.Tools>span {
+    margin: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Dropdown {
+    display: flex;
+}
+
+.DropdownContent {
+    display: none;
+    position: absolute;
+    margin-top: 60px;
+    margin-right: -40px;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.DropdownContent a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.DropdownContent a:hover {
+    background-color: #ddd;
+}
+
+.Dropdown:hover .DropdownContent {
+    display: block;
 }

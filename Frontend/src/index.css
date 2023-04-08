@@ -2,9 +2,91 @@ html, body, #root {
     margin: 0;
     text-align: center;
     font-size: x-large;
-    background-color: #f2f2f2;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
 }
 
 a {
     color: blue;
+}
+
+@media only screen and (max-width: 800px) {
+
+    .Menu {
+        width: 100%;
+        margin: 0 0 10px 0;
+        padding: 0 0 5px 0;
+    }
+
+    .Tools {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .Bars {
+        display: block;
+        position: absolute;
+        top: 60px;
+        left: 10px;
+        width: 50px;
+        height: 50px;
+        background-color: #e1e1e1;
+        color: #a7a7a7;
+        border-radius: 5px;
+    }
+
+    .Bars:Hover {
+        background-color: #d3d3d3;
+        color: #999999;
+    }
+
+    .Navbar_Mobile {
+        border-top: 1px solid #000;
+    }
+
+    .Navbar_Mobile > .Tools {
+        background-color: #cbcbcb;
+        border-bottom: 1px solid #000;
+        margin: 0;
+    }
+
+    .Navbar_Mobile > .Tools > span > * {
+        color: #585858;
+    }
+
+    .Navbar {
+        display: none;
+    }
+
+    .Menu > .Navbar_Mobile > a {
+        background-color: #EEE;
+        color: #000;
+        text-transform: uppercase;
+        text-decoration: none;
+        letter-spacing: 1px;
+        font-weight: bold;
+        font-size: 20px;
+        margin: 20px;
+        display: block;
+        margin: 0 auto;
+        border-top: 1px solid #dfdfdf;
+        padding: 5px 0 5px 0;
+    }
+
+    .Menu a:not(:first-child):Hover {
+        background-color: #d9d5cd;
+    }
+
+    .Menu:Hover {
+        background-color: transparent;
+    }
+
+    .Banner {
+        height: 200px;
+    }
+
+    .BannerText p:nth-of-type(2) {
+        font-size: 30px;
+    }
+
 }

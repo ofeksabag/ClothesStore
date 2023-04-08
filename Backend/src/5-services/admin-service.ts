@@ -6,6 +6,7 @@ import BrandModel from "../4-models/brand-model";
 import CategoryModel from "../4-models/category-model";
 import { ResourceNotFoundError } from "../4-models/client-errors";
 import DiscountModel from "../4-models/discount-model";
+import GeneralSettings from "../4-models/general-settings-model";
 import ProductModel from "../4-models/product-model";
 import SubcategoryModel from "../4-models/subcategory-model";
 
@@ -49,6 +50,14 @@ async function addDiscount(discount: DiscountModel): Promise<DiscountModel> {
     const result: OkPacket = await dal.execute(sql, discount.productId, discount.discount);
     discount.discountId = result.insertId;
     return discount;
+}
+
+async function updateGeneralSettings(generalSettings: GeneralSettings): Promise<GeneralSettings> {
+    generalSettings.validate();
+    const sql = "UPDATE layout SET layoutId = ?, websiteName = ?, websiteDescription = ?, themeColor = ?, headerLine = ?";
+    const result: OkPacket = await dal.execute(sql, generalSettings.layoutId, generalSettings.websiteName, generalSettings.websiteDescription, generalSettings.themeColor, generalSettings.headerLine);
+    if(result.affectedRows === 0) throw new ResourceNotFoundError(generalSettings.layoutId);
+    return generalSettings;
 }
 
 async function updateProduct(product: ProductModel): Promise<ProductModel> {
@@ -103,6 +112,7 @@ export default {
     deleteSubcategory,
     addProduct,
     addDiscount,
+    updateGeneralSettings,
     updateProduct,
     deleteProduct
 }

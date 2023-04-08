@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 15, 2023 at 11:27 PM
+-- Generation Time: Mar 25, 2023 at 05:39 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -186,6 +186,27 @@ CREATE TABLE `discounts` (
 
 INSERT INTO `discounts` (`discountId`, `productId`, `discount`) VALUES
 (1, 3, 10);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `layout`
+--
+
+CREATE TABLE `layout` (
+  `layoutId` int(11) NOT NULL,
+  `websiteName` varchar(50) NOT NULL,
+  `websiteDescription` varchar(200) NOT NULL,
+  `themeColor` varchar(100) NOT NULL,
+  `headerLine` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `layout`
+--
+
+INSERT INTO `layout` (`layoutId`, `websiteName`, `websiteDescription`, `themeColor`, `headerLine`) VALUES
+(1, 'Frenzy Brands', 'בוטיק \"Frenzy Brands\" מספק מגוון רחב של מותגי על בינלאומיים מקוריים בלבד.', '#f2f2f2', '✨ חדש! ✨ קטלוג קיץ 2023 עלה לאתר!');
 
 -- --------------------------------------------------------
 
@@ -395,6 +416,12 @@ ALTER TABLE `discounts`
   ADD KEY `productId` (`productId`);
 
 --
+-- Indexes for table `layout`
+--
+ALTER TABLE `layout`
+  ADD PRIMARY KEY (`layoutId`);
+
+--
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
@@ -456,7 +483,13 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `discounts`
 --
 ALTER TABLE `discounts`
-  MODIFY `discountId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `discountId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `layout`
+--
+ALTER TABLE `layout`
+  MODIFY `layoutId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `orders`
