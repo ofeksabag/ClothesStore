@@ -41,6 +41,7 @@ function Menu(): JSX.Element {
 
     const [mobileNavbar, setMobileNavbar] = useState(false);
     const handleClick = () => mobileNavbar === true ? setMobileNavbar(false) : setMobileNavbar(true);
+    const closeMobileNavbar = () => setMobileNavbar(false);
 
     const [matches, setMatches] = useState(window.matchMedia("(min-width: 800px)").matches);
 
@@ -82,35 +83,35 @@ function Menu(): JSX.Element {
                     </span>
                 </div>
 
-                <NavLink to="/brands">brands</NavLink>
-                <NavLink to="/sale">sale</NavLink>
+                <NavLink to="/products/brands">brands</NavLink>
+                <NavLink to="/products/sale">sale</NavLink>
                 <div className="Dropdown">
-                    <NavLink to="/girls">girls</NavLink>
+                    <NavLink to="/products/girls">girls</NavLink>
                     <div className="DropdownContent">
-                        {girlSubcategories.map(s => <NavLink key={s.categoryName + "/" + s.subcategoryName} to={"/products/" + s.categoryName + "/" + s.subcategoryName}>{s.subcategoryName}</NavLink>)}
+                        {girlSubcategories.map(s => <NavLink key={s.categoryName + "/" + s.subcategoryName} to={"/products/" + s.categoryName + "?filter=" + s.subcategoryName}>{s.subcategoryName}</NavLink>)}
                     </div>
                 </div>
                 <div className="Dropdown">
-                    <NavLink to="/boys">boys</NavLink>
+                    <NavLink to="/products/boys">boys</NavLink>
                     <div className="DropdownContent">
-                        {boySubcategories.map(s => <NavLink key={s.categoryName + "/" + s.subcategoryName} to={"/products/" + s.categoryName + "/" + s.subcategoryName}>{s.subcategoryName}</NavLink>)}
+                        {boySubcategories.map(s => <NavLink key={s.categoryName + "/" + s.subcategoryName} to={"/products/" + s.categoryName + "?filter=" + s.subcategoryName}>{s.subcategoryName}</NavLink>)}
                     </div>
                 </div>
                 <div className="Dropdown">
-                    <NavLink to="/women">women</NavLink>
+                    <NavLink to="/products/women">women</NavLink>
                     <div className="DropdownContent">
-                        {womenSubcategories.slice(0, 7).map(s => <NavLink key={s.categoryName + "/" + s.subcategoryName} to={"/products/" + s.categoryName + "/" + s.subcategoryName}>{s.subcategoryName}</NavLink>)}
+                        {womenSubcategories.slice(0, 7).map(s => <NavLink key={s.categoryName + "/" + s.subcategoryName} to={"/products/" + s.categoryName + "?filter=" + s.subcategoryName}>{s.subcategoryName}</NavLink>)}
                         <NavLink to="/products/women">...</NavLink>
                     </div>
                 </div>
                 <div className="Dropdown">
-                    <NavLink to="/men">men</NavLink>
+                    <NavLink to="/products/men">men</NavLink>
                     <div className="DropdownContent">
-                        {menSubcategories.slice(0, 7).map(s => <NavLink key={s.categoryName + "/" + s.subcategoryName} to={"/products/" + s.categoryName + "/" + s.subcategoryName}>{s.subcategoryName}</NavLink>)}
+                        {menSubcategories.slice(0, 7).map(s => <NavLink key={s.categoryName + "/" + s.subcategoryName} to={"/products/" + s.categoryName + "?filter=" + s.subcategoryName}>{s.subcategoryName}</NavLink>)}
                         <NavLink to="/products/men">...</NavLink>
                     </div>
                 </div>
-                <NavLink to="/new">new in</NavLink>
+                <NavLink to="/products/new">new in</NavLink>
 
             </div>
 
@@ -118,24 +119,24 @@ function Menu(): JSX.Element {
 
                 <div className="Tools">
                     <span>
-                        <NavLink to="/login">
+                        <NavLink onClick={closeMobileNavbar} to="/login">
                             <FontAwesomeIcon icon={faUser} />
                         </NavLink>
                     </span>
                     <span>
-                        <NavLink to="/search">
+                        <NavLink onClick={closeMobileNavbar} to="/search">
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </NavLink>
                     </span>
                 </div>
 
-                <NavLink to="/new">new in</NavLink>
-                <NavLink to="/men">men</NavLink>
-                <NavLink to="/women">women</NavLink>
-                <NavLink to="/boys">boys</NavLink>
-                <NavLink to="/girls">girls</NavLink>
-                <NavLink to="/sale">sale</NavLink>
-                <NavLink to="/brands">brands</NavLink>
+                <NavLink onClick={closeMobileNavbar} to="/products/new">new in</NavLink>
+                <NavLink onClick={closeMobileNavbar} to="/products/men">men</NavLink>
+                <NavLink onClick={closeMobileNavbar} to="/products/women">women</NavLink>
+                <NavLink onClick={closeMobileNavbar} to="/products/boys">boys</NavLink>
+                <NavLink onClick={closeMobileNavbar} to="/products/girls">girls</NavLink>
+                <NavLink onClick={closeMobileNavbar} to="/products/sale">sale</NavLink>
+                <NavLink onClick={closeMobileNavbar} to="/products/brands">brands</NavLink>
 
             </div>
 

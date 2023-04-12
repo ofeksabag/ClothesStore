@@ -15,7 +15,7 @@ function Home(): JSX.Element {
                     <p>
                         קולקציית החגים החדשה
                     </p>
-                    <NavLink to="/new"><span>קנו עכשיו</span></NavLink>
+                    <NavLink to="/products/new"><span>קנו עכשיו</span></NavLink>
                 </span>
             </div>
 

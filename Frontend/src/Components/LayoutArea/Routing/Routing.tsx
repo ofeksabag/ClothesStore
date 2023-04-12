@@ -17,13 +17,13 @@ function Routing(): JSX.Element {
 		<Routes>
             <Route path="/home" element={<Home />} />
 
-            <Route path="/new" element={<New/>} />
-            <Route path="/men" element={<Men />} />
-            <Route path="/women" element={<Women />} />
-            <Route path="/boys" element={<Boys />} />
-            <Route path="/girls" element={<Girls />} />
-            <Route path="/sale" element={<Sale />} />
-            <Route path="/brands" element={<Brands />} />
+            <Route path="/products/new" element={<New/>} />
+            <Route path="/products/men" element={<Men />} />
+            <Route path="/products/women" element={<Women />} />
+            <Route path="/products/boys" element={<Boys />} />
+            <Route path="/products/girls" element={<Girls />} />
+            <Route path="/products/sale" element={<Sale />} />
+            <Route path="/products/brands" element={<Brands />} />
 
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />

@@ -1,3 +1,19 @@
 .Login {
-	
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    width: 80%;
+    height: 600px;
+    margin: 0 auto;
+}
+
+.Box {
+    width: 100%;
+    grid-column: span 3;
+}
+
+.AuthBanner {
+    background-image: url("../../../Assets/Images/auth_banner.jpg");
+    background-size: 100% 100%;
+    width: 100%;
+    grid-column: span 5;
 }
