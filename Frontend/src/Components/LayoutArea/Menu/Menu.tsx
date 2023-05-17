@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import websiteService from "../../../Services/WebsiteService";
 import notify from "../../../Utils/Notify";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faMagnifyingGlass, faBars } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faMagnifyingGlass, faBars, faClose } from '@fortawesome/free-solid-svg-icons';
 import "./Menu.css";
 import SubcategoryModel from "../../../Models/SubcategoryModel";
 import productService from "../../../Services/ProductService";
@@ -116,6 +116,10 @@ function Menu(): JSX.Element {
             </div>
 
             <div className="Navbar_Mobile" style={{ display: mobileNavbar ? 'block' : 'none' }}>
+
+                <div className="CloseBtn" onClick={closeMobileNavbar}>
+                    <FontAwesomeIcon icon={faClose} />
+                </div>
 
                 <div className="Tools">
                     <span>

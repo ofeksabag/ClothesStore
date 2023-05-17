@@ -73,7 +73,7 @@ function verifyToken(request: Request): Promise<boolean> {
 async function verifyAdmin(request: Request): Promise<boolean> {
     await verifyToken(request);
     const user: UserModel = getUserFromToken(request);
-    return +user.role === +RoleModel.Admin || +user.role === +RoleModel.Owner;
+    return +user.role === +RoleModel.Admin;
 }
 
 function getUserFromToken(request: Request): UserModel {
@@ -91,7 +91,7 @@ function hashPassword(plainText: string): string {
     if (!plainText) return null;
 
     // Hashing with salt:
-    const salt = "OS-Vacations";
+    const salt = "OS-ClothesStore";
     const hashedPassword = crypto.createHmac("sha512", salt).update(plainText).digest("hex");
 
     return hashedPassword;

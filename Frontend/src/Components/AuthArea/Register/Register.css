@@ -1,3 +1,38 @@
 .Register {
-	
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+}
+
+.Register>.Box {
+    width: 100%;
+    grid-column: span 4;
+}
+
+.Register>.AuthBanner {
+    background-image: url("../../../Assets/Images/register_banner.jpg");
+    background-size: 100% 100%;
+    width: 100%;
+    grid-column: span 4;
+}
+
+.Register>.Box>form>.BoxBg {
+    display: flex;
+    justify-content: space-around;
+}
+
+.Register>.Box>form>.BoxBg>div {
+    background-color: #efefef;
+    width: 100%;
+    margin: 5px;
+    padding: 10px;
+}
+
+.Register>.Box>form>.BoxBg>div>input:nth-of-type(1),
+.Register>.Box>form>.BoxBg>div>input:nth-of-type(2),
+.Register>.Box>form>.BoxBg>div>input:nth-of-type(5),
+.Register>.Box>form>.BoxBg>div>input:nth-of-type(6) {
+    text-align: right;
 }

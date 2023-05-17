@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2023 at 05:39 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- Generation Time: May 17, 2023 at 11:09 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -120,13 +120,6 @@ CREATE TABLE `cart` (
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`cartId`, `userId`, `date`) VALUES
-(2, 4, '2023-03-16');
-
 -- --------------------------------------------------------
 
 --
@@ -139,13 +132,6 @@ CREATE TABLE `cartitems` (
   `cartId` int(11) NOT NULL,
   `amount` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `cartitems`
---
-
-INSERT INTO `cartitems` (`itemId`, `productId`, `cartId`, `amount`) VALUES
-(10, 3, 2, 2);
 
 -- --------------------------------------------------------
 
@@ -227,13 +213,6 @@ CREATE TABLE `orders` (
   `lastDigits` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `orders`
---
-
-INSERT INTO `orders` (`orderId`, `userId`, `cartId`, `totalPrice`, `city`, `address`, `house`, `zipcode`, `orderDate`, `lastDigits`) VALUES
-(2, 4, 2, '50.00', 'tel aviv', 'sumsum 5', 1, 88372, '2023-03-16', 9948);
-
 -- --------------------------------------------------------
 
 --
@@ -256,7 +235,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`productId`, `brandId`, `categoryId`, `subcategoryId`, `name`, `description`, `price`, `imageUrl`) VALUES
-(3, 2, 1, 3, 'Test', 'This is test', '5.00', 'bb7e2f6b-5fd6-4f5c-b521-c8b8fd68bfe4.JPG');
+(3, 2, 1, 3, 'Test', 'This is test', 5.00, 'bb7e2f6b-5fd6-4f5c-b521-c8b8fd68bfe4.JPG');
 
 -- --------------------------------------------------------
 
@@ -367,15 +346,16 @@ CREATE TABLE `users` (
   `city` varchar(50) NOT NULL,
   `address` varchar(100) NOT NULL,
   `house` int(4) NOT NULL,
-  `zipcode` int(10) NOT NULL
+  `zipCode` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`userId`, `firstName`, `lastName`, `email`, `password`, `role`, `city`, `address`, `house`, `zipcode`) VALUES
-(4, 'Menashe', 'Kadishman', 'admin@gmail.com', 'e5a90c351f38ff167d226e1a64797f935baf5efdc6d2ae6af2bf916b71a8719064c76b287c8ee2c7c28531c6737f73ac64d7b3ad5ca53b9f8e96d5de388e883b', 3, 'Tel Aviv', 'Sesame street', 1, 88473647);
+INSERT INTO `users` (`userId`, `firstName`, `lastName`, `email`, `password`, `role`, `city`, `address`, `house`, `zipCode`) VALUES
+(6, 'מנשה', 'קדישמן', 'admin@gmail.com', '223dbaf1ce82337d6991fd327d93961649d6c4d389b04d96026f726f0e9adce8299ced0c8790fbbe9f715cd4a7ad27fb956ed6e05423448a2eac9b1e15593d10', 2, 'תל אביב', 'סומסום', 1, 46354634),
+(7, 'קרן', 'לייזר', 'user@gmail.com', '223dbaf1ce82337d6991fd327d93961649d6c4d389b04d96026f726f0e9adce8299ced0c8790fbbe9f715cd4a7ad27fb956ed6e05423448a2eac9b1e15593d10', 1, 'ארצות הברית', 'הארלם', 83, 33758);
 
 --
 -- Indexes for dumped tables
@@ -513,7 +493,7 @@ ALTER TABLE `subcategory`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
