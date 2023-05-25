@@ -14,6 +14,8 @@ import PageNotFound from "../PageNotFound/PageNotFound";
 import { useEffect, useState } from "react";
 import UserModel from "../../../Models/UserModel";
 import { authStore } from "../../../Redux/AuthState";
+import Profile from "../../AuthArea/Profile/Profile";
+import Settings from "../../AdminArea/Settings/Settings";
 
 function Routing(): JSX.Element {
 
@@ -43,8 +45,20 @@ function Routing(): JSX.Element {
 
 
             {!user && <>
+
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+
+            </>}
+
+            {user && <>
+
+                <Route path="/profile" element={<Profile />} />
+
+                {user.role === 2 && <>
+                    <Route path="/admin" element={<Settings />} />
+                </>}
+
             </>}
 
             <Route path="/search" element={<Search />} />
