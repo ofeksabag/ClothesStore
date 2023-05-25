@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import websiteService from "../../../Services/WebsiteService";
 import notify from "../../../Utils/Notify";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faMagnifyingGlass, faBars, faClose } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faMagnifyingGlass, faBars, faClose, faRightFromBracket, faGear, faUserPen } from '@fortawesome/free-solid-svg-icons';
 import "./Menu.css";
 import SubcategoryModel from "../../../Models/SubcategoryModel";
 import productService from "../../../Services/ProductService";
+import UserModel from "../../../Models/UserModel";
+import { authStore } from "../../../Redux/AuthState";
+import authService from "../../../Services/AuthService";
 
 function Menu(): JSX.Element {
 
@@ -54,6 +57,25 @@ function Menu(): JSX.Element {
 
     }, [matches]);
 
+    const [user, setUser] = useState<UserModel>();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+
+        setUser(authStore.getState().user);
+
+        authStore.subscribe(() => {
+            setUser(authStore.getState().user);
+        });
+
+    }, []);
+
+    function logout(): void {
+        authService.logout();
+        notify.success("התנתקתם בהצלחה!");
+        navigate("/login");
+    }
+
     return (
         <div className="Menu">
 
@@ -71,11 +93,43 @@ function Menu(): JSX.Element {
             <div className="Navbar">
 
                 <div className="Tools">
-                    <span>
-                        <NavLink to="/login">
-                            <FontAwesomeIcon icon={faUser} />
-                        </NavLink>
-                    </span>
+
+                    {!user && <>
+
+                        <span>
+                            <NavLink to="/login">
+                                <FontAwesomeIcon icon={faUser} />
+                            </NavLink>
+                        </span>
+
+                    </>}
+
+                    {user && <>
+
+                        <span>
+                            <NavLink to="/login" onClick={logout}>
+                                <FontAwesomeIcon icon={faRightFromBracket} />
+                            </NavLink>
+                        </span>
+
+                        {user.role === 2 && <>
+
+                            <span>
+                                <NavLink to="/admin" style={{ color: "#a74337" }}>
+                                    <FontAwesomeIcon icon={faGear} />
+                                </NavLink>
+                            </span>
+
+                        </>}
+                        
+                        <span>
+                            <NavLink to="/profile">
+                                <FontAwesomeIcon icon={faUserPen} />
+                            </NavLink>
+                        </span>
+
+                    </>}
+
                     <span>
                         <NavLink to="/search">
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
@@ -122,11 +176,46 @@ function Menu(): JSX.Element {
                 </div>
 
                 <div className="Tools">
-                    <span>
-                        <NavLink onClick={closeMobileNavbar} to="/login">
-                            <FontAwesomeIcon icon={faUser} />
-                        </NavLink>
-                    </span>
+
+                    {!user && <>
+
+                        <span>
+                            <NavLink onClick={closeMobileNavbar} to="/login">
+                                <FontAwesomeIcon icon={faUser} />
+                            </NavLink>
+                        </span>
+
+                    </>}
+
+                    {user && <>
+
+                        <span>
+                            <NavLink to="/login" onClick={() => {
+                                logout();
+                                closeMobileNavbar();
+                            }}>
+                                <FontAwesomeIcon icon={faRightFromBracket} />
+                            </NavLink>
+                        </span>
+
+                        {user.role === 2 && <>
+
+                            <span>
+                                <NavLink to="/admin" style={{ color: "#a74337" }} onClick={closeMobileNavbar}>
+                                    <FontAwesomeIcon icon={faGear} />
+                                </NavLink>
+                            </span>
+
+                        </>}
+
+                        <span>
+                            <NavLink to="/profile">
+                                <FontAwesomeIcon icon={faUserPen} />
+                            </NavLink>
+                        </span>
+
+                    </>}
+
                     <span>
                         <NavLink onClick={closeMobileNavbar} to="/search">
                             <FontAwesomeIcon icon={faMagnifyingGlass} />

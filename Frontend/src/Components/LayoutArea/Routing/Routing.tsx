@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Login from "../../AuthArea/Login/Login";
 import Register from "../../AuthArea/Register/Register";
 import Boys from "../../BoysArea/Boys/Boys";
@@ -11,13 +11,29 @@ import Sale from "../../SaleArea/Sale/Sale";
 import Search from "../../SearchArea/Search/Search";
 import Women from "../../WomenArea/Women/Women";
 import PageNotFound from "../PageNotFound/PageNotFound";
+import { useEffect, useState } from "react";
+import UserModel from "../../../Models/UserModel";
+import { authStore } from "../../../Redux/AuthState";
 
 function Routing(): JSX.Element {
+
+    const [user, setUser] = useState<UserModel>();
+
+    useEffect(() => {
+
+        setUser(authStore.getState().user);
+
+        authStore.subscribe(() => {
+            setUser(authStore.getState().user);
+        });
+
+    }, []);
+
     return (
-		<Routes>
+        <Routes>
             <Route path="/home" element={<Home />} />
 
-            <Route path="/products/new" element={<New/>} />
+            <Route path="/products/new" element={<New />} />
             <Route path="/products/men" element={<Men />} />
             <Route path="/products/women" element={<Women />} />
             <Route path="/products/boys" element={<Boys />} />
@@ -25,8 +41,11 @@ function Routing(): JSX.Element {
             <Route path="/products/sale" element={<Sale />} />
             <Route path="/products/brands" element={<Brands />} />
 
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
+
+            {!user && <>
+                <Route path="/login" element={<Login />} />
+                <Route path="/register" element={<Register />} />
+            </>}
 
             <Route path="/search" element={<Search />} />
 
