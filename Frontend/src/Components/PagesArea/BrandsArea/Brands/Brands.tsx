@@ -3,7 +3,7 @@ import "./Brands.css";
 function Brands(): JSX.Element {
     return (
         <div className="Brands">
-			רשימת מותגים
+			מותגים
         </div>
     );
 }
