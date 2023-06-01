@@ -46,7 +46,7 @@ router.get("/auth/users/:userId([0-9]+)", async (request: Request, response: Res
 });
 
 // PUT http://localhost:4000/api/auth/users/:userId
-router.put("/auth/users/:userId([0-9]+)", verifyLoggedIn, async (request: Request, response: Response, next: NextFunction) => {
+router.put("/auth/users/:userId([0-9]+)", async (request: Request, response: Response, next: NextFunction) => {
     try {
         request.body.userId = +request.params.userId;
         const user = new UpdateUserModel(request.body);
