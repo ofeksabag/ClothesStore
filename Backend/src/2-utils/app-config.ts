@@ -4,7 +4,7 @@ class AppConfig {
     public mysqlHost = "localhost";
     public mysqlUser = "root";
     public mysqlPassword = "";
-    public mysqlDatabase = "clothesStore"; // Fill in the database name
+    public mysqlDatabase = "clothesStore";
 
     public productsImagesUrl = "./src/1-assets/images/products/";
 

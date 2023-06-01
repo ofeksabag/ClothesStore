@@ -4,44 +4,22 @@ import fsPromises from "fs/promises";
 import path from "path";
 import fs from "fs";
 
-// Save new image:
 async function saveImage(native: string, image: UploadedFile): Promise<string> {
-
-    // Create unique image name:
     const uniqueImageName = createImageName(image.name);
-
-    // Create absolute path:
     const absolutePath = native + uniqueImageName;
-
-    // Save to disk:
-    await image.mv(absolutePath); // mv = move
-
-    // Return new name:
+    await image.mv(absolutePath);
     return uniqueImageName;
-
 }
 
-// Update existing image:
 async function updateImage(native: string, image: UploadedFile, existingImageName: string): Promise<string> {
-
-    // Delete existing image:
     await deleteImage(native, existingImageName);
-
-    // Save new image to disk:
     const uniqueImageName = await saveImage(native, image);
-
-    // Return unique name:
     return uniqueImageName;
-
 }
 
 async function deleteImage(native: string, existingImageName: string): Promise<void> {
     try {
-
-        // If no image sent:
         if(!existingImageName) return;
-
-        // Delete image from disk:
         await fsPromises.unlink(native + existingImageName);
     }
     catch(err: any) {
@@ -50,14 +28,8 @@ async function deleteImage(native: string, existingImageName: string): Promise<v
 }
 
 function createImageName(originalImageName: string): string {
-    
-    // Take original name's extension:
     const extension = originalImageName.substring(originalImageName.lastIndexOf("."));
-
-    // Create unique name including original extension (v4 = 36 chars uuid):
     const uniqueImageName = uuid() + extension;
-
-    // Return unique name:
     return uniqueImageName;
 }
 

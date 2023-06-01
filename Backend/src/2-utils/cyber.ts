@@ -8,61 +8,37 @@ import UserModel from "../4-models/user-model";
 const secretKey = "OS - ClothesStore";
 
 function createNewToken(user: UserModel): string {
-
-    // Remove password:
     delete user.password;
-
-    // Create container for the user object:
     const container = { user }
-
-    // Create options:
     const options = { expiresIn: "3h" };
-
-    // Create the token:
     const token = jwt.sign(container, secretKey, options);
-
     return token;
-
 }
 
-// Verify if token is valid or not (Header --> authorization: "Bearer the-token"):
-//                                                             01234567
 function verifyToken(request: Request): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
         try {
-
-            // Extract authorization header:
             const header = request.header("authorization");
 
-            // If missing:
             if (!header) {
                 reject(new AuthenticationError("Invalid token"));
                 return;
             }
 
-            // Extract token:
             const token = header.substring(7);
 
-            // If missing:
             if (!token) {
                 reject(new AuthenticationError("Invalid token"));
                 return;
             }
 
-            // Verify:
             jwt.verify(token, secretKey, (err: JsonWebTokenError) => {
-
-                // If Token not valid:
                 if (err) {
                     reject(new AuthenticationError("Invalid token"));
                     return;
                 }
-
-                // Here the token must be valid:
                 resolve(true);
-
             });
-
         }
         catch (err: any) {
             reject(err);
@@ -83,17 +59,10 @@ function getUserFromToken(request: Request): UserModel {
     return user;
 }
 
-// Hash password: 
-// SHA = Secure Hashing Algorithm
-// HMAC = Hash based Message Authentication Code
 function hashPassword(plainText: string): string {
-
     if (!plainText) return null;
-
-    // Hashing with salt:
     const salt = "OS-ClothesStore";
     const hashedPassword = crypto.createHmac("sha512", salt).update(plainText).digest("hex");
-
     return hashedPassword;
 }
 

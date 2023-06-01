@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 17, 2023 at 11:09 PM
+-- Generation Time: Jun 01, 2023 at 01:03 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -166,13 +166,6 @@ CREATE TABLE `discounts` (
   `discount` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data for table `discounts`
---
-
-INSERT INTO `discounts` (`discountId`, `productId`, `discount`) VALUES
-(1, 3, 10);
-
 -- --------------------------------------------------------
 
 --
@@ -229,13 +222,6 @@ CREATE TABLE `products` (
   `price` decimal(5,2) NOT NULL,
   `imageUrl` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `products`
---
-
-INSERT INTO `products` (`productId`, `brandId`, `categoryId`, `subcategoryId`, `name`, `description`, `price`, `imageUrl`) VALUES
-(3, 2, 1, 3, 'Test', 'This is test', 5.00, 'bb7e2f6b-5fd6-4f5c-b521-c8b8fd68bfe4.JPG');
 
 -- --------------------------------------------------------
 
