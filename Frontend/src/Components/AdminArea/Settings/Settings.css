@@ -1,3 +1,38 @@
-.Settings {
-	
+.SettingsComponent {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.SettingsComponent > .SettingsMenu {
+    width: 300px;
+    background-color: #e7e7e7;
+}
+
+.SettingsComponent > .Page {
+    width: 500px;
+    background-color: #EEE;
+    padding-bottom: 10px;
+}
+
+.SettingsComponent > .SettingsMenu > .Btn {
+    margin: 10px;
+    cursor: pointer;
+    text-align: right;
+}
+
+.SettingsComponent > .SettingsMenu > .Btn:Hover {
+    background-color: #EEE;
+}
+
+.SettingsComponent > .SettingsMenu > .Btn > svg {
+    margin-left: 15px;
+    color: #7a7a7a;
+}
+
+.SettingsComponent > .Page > .PageBox {
+    text-align: right;
+    margin: 20px;
 }

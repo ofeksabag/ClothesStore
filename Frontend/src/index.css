@@ -154,7 +154,9 @@ a {
         font-size: 30px;
     }
 
-    .Login, .Register, .Register>.Box>form>.BoxBg {
+    .Login,
+    .Register,
+    .Register>.Box>form>.BoxBg {
         display: block;
     }
 
@@ -175,12 +177,21 @@ a {
         height: auto;
     }
 
-    .Profile {
+    .Profile,
+    .SettingsComponent {
         display: block;
         margin: 0;
     }
 
-    .Profile > .Settings, .Profile > .Page {
+    .Profile>.Settings>.Btn,
+    .SettingsComponent>.SettingsMenu>.Btn {
+        text-align: center;
+    }
+
+    .Profile>.Settings,
+    .Profile>.Page,
+    .SettingsComponent>.SettingsMenu,
+    .SettingsComponent>.Page {
         width: 100%;
         padding: 5px 0 5px 0;
         margin: 0;
