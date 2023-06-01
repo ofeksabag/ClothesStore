@@ -6,6 +6,8 @@ import { useEffect } from "react";
 import authService from "../../../Services/AuthService";
 import notify from "../../../Utils/Notify";
 import { authStore } from "../../../Redux/AuthState";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleInfo, faTruck, faUserGear } from "@fortawesome/free-solid-svg-icons";
 
 function Profile(): JSX.Element {
 
@@ -33,7 +35,25 @@ function Profile(): JSX.Element {
 
     return (
         <div className="Profile">
-			פרופיל
+            <div className="Settings">
+
+                <div className="Btn">
+                    <FontAwesomeIcon icon={faCircleInfo} />
+                    <span>פרטים אישיים</span>
+                </div>
+
+                <div className="Btn">
+                    <FontAwesomeIcon icon={faUserGear} />
+                    <span>עריכת פרטי משתמש</span>
+                </div>
+
+                <div className="Btn">
+                    <FontAwesomeIcon icon={faTruck} />
+                    <span>עריכת פרטי משלוח</span>
+                </div>
+            
+            </div>
+            <div className="Page">2</div>
         </div>
     );
 }

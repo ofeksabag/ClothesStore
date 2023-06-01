@@ -1,3 +1,30 @@
 .Profile {
-	
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.Profile > .Settings {
+    width: 300px;
+    background-color: #e7e7e7;
+}
+
+.Profile > .Page {
+    width: 700px;
+    background-color: #EEE;
+}
+
+.Profile > .Settings > .Btn {
+    margin: 10px;
+    cursor: pointer;
+}
+
+.Profile > .Settings > .Btn:Hover {
+    background-color: #EEE;
+}
+
+.Profile > .Settings > .Btn > svg {
+    margin-left: 15px;
+    color: #7a7a7a;
 }

@@ -175,4 +175,15 @@ a {
         height: auto;
     }
 
+    .Profile {
+        display: block;
+        margin: 0;
+    }
+
+    .Profile > .Settings, .Profile > .Page {
+        width: 100%;
+        padding: 5px 0 5px 0;
+        margin: 0;
+    }
+
 }

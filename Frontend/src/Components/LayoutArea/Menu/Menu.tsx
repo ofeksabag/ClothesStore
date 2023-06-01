@@ -209,7 +209,7 @@ function Menu(): JSX.Element {
                         </>}
 
                         <span>
-                            <NavLink to="/profile">
+                            <NavLink onClick={closeMobileNavbar} to="/profile">
                                 <FontAwesomeIcon icon={faUserPen} />
                             </NavLink>
                         </span>
