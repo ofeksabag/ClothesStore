@@ -1,13 +1,11 @@
 import { useState } from "react";
 import "./Settings.css";
-import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBagShopping, faBoxesStacked, faCoins, faCubesStacked, faGear, faList, faTag, faUsers } from "@fortawesome/free-solid-svg-icons";
 
 function Settings(): JSX.Element {
 
     const [activeTab, setActiveTab] = useState('generalSettings');
-    const navigate = useNavigate();
 
     const handleTabClick = (tab: string) => {
         setActiveTab(tab);

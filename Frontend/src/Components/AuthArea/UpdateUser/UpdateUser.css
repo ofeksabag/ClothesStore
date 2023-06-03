@@ -1,0 +1,36 @@
+.UpdateUser > form > .PageBox {
+    text-align: right;
+    margin: 20px;
+}
+
+.UpdateUser > form > .PageBox > input {
+    display: block;
+    padding: 5px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    width: 100%;
+}
+
+.UpdateUser > form > .PageBox > div {
+    text-align: center;
+}
+
+.UpdateUser > form > .PageBox > div > button {
+    margin-bottom: 20px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 16px;
+    background-color: #d9d5cd;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+}
+
+.UpdateUser > form > .PageBox > .Err {
+    text-align: right;
+    background-color: #eddede;
+    padding: 0 5px 0 5px;
+    width: 100%;
+    border-radius: 0 0 5px 5px;
+}
