@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Settings.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBagShopping, faBoxesStacked, faCoins, faCubesStacked, faGear, faList, faTag, faUsers } from "@fortawesome/free-solid-svg-icons";
+import GeneralSettings from "../GeneralSettings/GeneralSettings";
 
 function Settings(): JSX.Element {
 
@@ -59,12 +60,7 @@ function Settings(): JSX.Element {
             <div className="Page">
 
                 {activeTab === 'generalSettings' && <>
-                    <h1>הגדרות כלליות</h1>
-                    <div className="PageBox">
-                        <p>
-                            1
-                        </p>
-                    </div>
+                    <GeneralSettings />
                 </>}
 
                 {activeTab === 'categories' && <>
