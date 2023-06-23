@@ -2,3 +2,35 @@
     text-align: right;
     margin: 20px;
 }
+
+.Statistics {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.Statistics > .StatisticsBox {
+    width: 200px;
+    text-align: center;
+    padding: 10px 10px 0 10px;
+    background-color: #bfbfbf;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #6e6e6e;
+}
+
+.Statistics > .StatisticsBox > .TotalIcon {
+    font-size: 50px;
+    color: #FFF;
+}
+
+.Statistics > .StatisticsBox > .TotalText > p {
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-shadow: 0px 0px 5px #FFF, 1px 0px 2px #FFF, 0px 1px 2px #FFF;
+}
+
+.Statistics > .StatisticsBox > .TotalText > h3 {
+    letter-spacing: 1.5px;
+    color: #FFF;
+}

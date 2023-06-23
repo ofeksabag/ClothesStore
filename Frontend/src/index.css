@@ -197,4 +197,13 @@ a {
         margin: 0;
     }
 
+    .Statistics {
+        display: block;
+    }
+
+    .Statistics > .StatisticsBox {
+        width: 98%;
+        margin-bottom: 10px;
+    }
+
 }
