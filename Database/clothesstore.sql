@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 01, 2023 at 01:03 PM
+-- Generation Time: Jun 23, 2023 at 04:37 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -219,8 +219,21 @@ CREATE TABLE `products` (
   `subcategoryId` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `description` varchar(300) NOT NULL,
-  `price` decimal(5,2) NOT NULL,
+  `price` decimal(6,2) NOT NULL,
   `imageUrl` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sizes`
+--
+
+CREATE TABLE `sizes` (
+  `sizeId` int(11) NOT NULL,
+  `productId` int(11) NOT NULL,
+  `size` varchar(5) NOT NULL,
+  `amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -340,7 +353,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`userId`, `firstName`, `lastName`, `email`, `password`, `role`, `city`, `address`, `house`, `zipCode`) VALUES
-(6, 'מנשה', 'קדישמן', 'admin@gmail.com', '223dbaf1ce82337d6991fd327d93961649d6c4d389b04d96026f726f0e9adce8299ced0c8790fbbe9f715cd4a7ad27fb956ed6e05423448a2eac9b1e15593d10', 2, 'תל אביב', 'סומסום', 1, 46354634),
+(6, 'מנשה', 'קדישמן', 'admin@gmail.com', '223dbaf1ce82337d6991fd327d93961649d6c4d389b04d96026f726f0e9adce8299ced0c8790fbbe9f715cd4a7ad27fb956ed6e05423448a2eac9b1e15593d10', 2, 'תל אביב', 'סומסום', 1, 3434883),
 (7, 'קרן', 'לייזר', 'user@gmail.com', '223dbaf1ce82337d6991fd327d93961649d6c4d389b04d96026f726f0e9adce8299ced0c8790fbbe9f715cd4a7ad27fb956ed6e05423448a2eac9b1e15593d10', 1, 'ארצות הברית', 'הארלם', 83, 33758);
 
 --
@@ -405,6 +418,13 @@ ALTER TABLE `products`
   ADD KEY `categoryId` (`categoryId`);
 
 --
+-- Indexes for table `sizes`
+--
+ALTER TABLE `sizes`
+  ADD PRIMARY KEY (`sizeId`),
+  ADD KEY `productId` (`productId`);
+
+--
 -- Indexes for table `subcategory`
 --
 ALTER TABLE `subcategory`
@@ -467,7 +487,13 @@ ALTER TABLE `orders`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `productId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `sizes`
+--
+ALTER TABLE `sizes`
+  MODIFY `sizeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `subcategory`
@@ -518,6 +544,12 @@ ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_1` FOREIGN KEY (`categoryId`) REFERENCES `category` (`categoryId`),
   ADD CONSTRAINT `products_ibfk_2` FOREIGN KEY (`brandId`) REFERENCES `brands` (`brandId`),
   ADD CONSTRAINT `products_ibfk_3` FOREIGN KEY (`subcategoryId`) REFERENCES `subcategory` (`subcategoryId`);
+
+--
+-- Constraints for table `sizes`
+--
+ALTER TABLE `sizes`
+  ADD CONSTRAINT `sizes_ibfk_1` FOREIGN KEY (`productId`) REFERENCES `products` (`productId`);
 
 --
 -- Constraints for table `subcategory`
