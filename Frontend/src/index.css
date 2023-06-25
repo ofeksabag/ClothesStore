@@ -197,13 +197,24 @@ a {
         margin: 0;
     }
 
-    .Statistics {
+    .StatisticsArea, .Statistics > .PageBox > .Graphs {
         display: block;
     }
 
-    .Statistics > .StatisticsBox {
-        width: 98%;
+    .StatisticsArea > .StatisticsBox {
+        width: 100%;
         margin-bottom: 10px;
+        padding: 0;
+    }
+
+    .Statistics > .PageBox > .Graphs > .DailyEarning {
+        margin: 0;
+        width: 100%;
+    }
+
+    .Statistics > .PageBox > .Graphs > .SmallGraphs > .Pie {
+        margin: 10px 0 0 0;
+        width: 100%;
     }
 
 }

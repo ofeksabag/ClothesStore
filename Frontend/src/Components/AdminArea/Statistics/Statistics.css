@@ -1,0 +1,84 @@
+.Statistics > .PageBox {
+    text-align: right;
+    margin: 20px;
+}
+
+.StatisticsArea {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.Statistics > .PageBox > .Graphs {
+    display: flex;
+    justify-content: center;
+}
+
+.StatisticsArea > .StatisticsBox {
+    width: 250px;
+    text-align: center;
+    padding: 10px 10px 0 15px;
+    background-color: #d9d5cd;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: #897a5f;
+}
+
+.StatisticsArea > .StatisticsBox > .TotalIcon {
+    font-size: 50px;
+    color: #85764e;
+}
+
+.StatisticsArea > .StatisticsBox > .TotalText > p {
+    letter-spacing: 1px;
+    font-weight: bold;
+    text-shadow: 0px 0px 5px #FFF, 1px 0px 2px #FFF, 0px 1px 2px #FFF;
+}
+
+.StatisticsArea > .StatisticsBox > .TotalText > h3 {
+    letter-spacing: 1.5px;
+    color: #85764e;
+}
+
+.Statistics > .PageBox > .Graphs > .DailyEarning {
+    width: 600px;
+    height: 400px;
+    margin: 10px;
+    border: 5px solid #85764e;
+}
+
+.Statistics > .PageBox > .Graphs > .SmallGraphs > .Pie {
+    width: 400px;
+    height: 300px;
+    margin: 10px;
+    border: 5px solid #85764e;
+}
+
+.Statistics > .PageBox > .Graphs > .DailyEarning > .GraphHeader,
+.Statistics > .PageBox > .Graphs > .SmallGraphs > .Pie > .GraphHeader {
+    position: absolute;
+    z-index: 1;
+    background-color: #85764e;
+    padding: 10px;
+    color: #FFF;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 0 0 0 10px;
+}
+
+.Excel > button {
+    margin: 3px;
+    cursor: pointer;
+    background-color: #85764e;
+    border: none;
+    color: #FFF;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    letter-spacing: 1px;
+    border-radius: 5px;
+}
+
+.Excel > button:Hover {
+    background-color: #60532f;
+}

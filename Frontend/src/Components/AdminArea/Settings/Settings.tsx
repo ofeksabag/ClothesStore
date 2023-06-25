@@ -1,12 +1,13 @@
 import { useState } from "react";
 import "./Settings.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBagShopping, faBoxesStacked, faCoins, faCubesStacked, faGear, faList, faTag, faUsers } from "@fortawesome/free-solid-svg-icons";
+import { faBagShopping, faBoxesStacked, faChartSimple, faCoins, faCubesStacked, faGear, faList, faTag, faUsers } from "@fortawesome/free-solid-svg-icons";
 import GeneralSettings from "../GeneralSettings/GeneralSettings";
+import Statistics from "../Statistics/Statistics";
 
 function Settings(): JSX.Element {
 
-    const [activeTab, setActiveTab] = useState('generalSettings');
+    const [activeTab, setActiveTab] = useState('statistics');
 
     const handleTabClick = (tab: string) => {
         setActiveTab(tab);
@@ -15,6 +16,11 @@ function Settings(): JSX.Element {
     return (
         <div className="SettingsComponent">
             <div className="SettingsMenu">
+
+                <div className="Btn" onClick={() => handleTabClick('statistics')}>
+                    <FontAwesomeIcon icon={faChartSimple} />
+                    <span>סטטיסטיקות</span>
+                </div>
 
                 <div className="Btn" onClick={() => handleTabClick('generalSettings')}>
                     <FontAwesomeIcon icon={faGear} />
@@ -58,6 +64,10 @@ function Settings(): JSX.Element {
 
             </div>
             <div className="Page">
+
+                {activeTab === 'statistics' && <>
+                    <Statistics />
+                </>}
 
                 {activeTab === 'generalSettings' && <>
                     <GeneralSettings />
