@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2023 at 04:37 PM
+-- Generation Time: Jul 09, 2023 at 07:04 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -22,6 +22,23 @@ SET time_zone = "+00:00";
 --
 CREATE DATABASE IF NOT EXISTS `clothesstore` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `clothesstore`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `activelayout`
+--
+
+CREATE TABLE `activelayout` (
+  `option` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `activelayout`
+--
+
+INSERT INTO `activelayout` (`option`) VALUES
+(1);
 
 -- --------------------------------------------------------
 
@@ -185,7 +202,7 @@ CREATE TABLE `layout` (
 --
 
 INSERT INTO `layout` (`layoutId`, `websiteName`, `websiteDescription`, `themeColor`, `headerLine`) VALUES
-(1, 'Frenzy Brands', 'בוטיק \"Frenzy Brands\" מספק מגוון רחב של מותגי על בינלאומיים מקוריים בלבד.', '#f2f2f2', '✨ חדש! ✨ קטלוג קיץ 2023 עלה לאתר!');
+(1, 'Frenzy Brands', 'בוטיק \"Frenzy Brands\" מספק מגוון רחב של מותגי על בינלאומיים מקוריים בלבד.', '#f5f5f5', '✨ חדש! ✨ קטלוג קיץ 2023 עלה לאתר!');
 
 -- --------------------------------------------------------
 

@@ -10,7 +10,7 @@
 
 .Statistics > .PageBox > .Graphs {
     display: flex;
-    justify-content: center;
+    width: 100%;
 }
 
 .StatisticsArea > .StatisticsBox {
@@ -41,7 +41,7 @@
 }
 
 .Statistics > .PageBox > .Graphs > .DailyEarning {
-    width: 600px;
+    width: 100%;
     height: 400px;
     margin: 10px;
     border: 5px solid #85764e;

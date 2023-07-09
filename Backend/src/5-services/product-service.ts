@@ -65,8 +65,8 @@ async function addOrder(order: OrderModel): Promise<OrderModel> {
 
 async function updateCartItem(cartItem: CartItemsModel): Promise<CartItemsModel> {
     cartItem.validate();
-    const sql = "UPDATE cartItems SET productId = ?, cartId = ?, amount = ?";
-    const result: OkPacket = await dal.execute(sql, cartItem.productId, cartItem.cartId, cartItem.amount);
+    const sql = "UPDATE cartItems SET productId = ?, cartId = ?, amount = ? WHERE cartId = ?";
+    const result: OkPacket = await dal.execute(sql, cartItem.productId, cartItem.cartId, cartItem.amount, cartItem.cartId);
     if(result.affectedRows === 0) throw new ResourceNotFoundError(cartItem.itemId);
     return cartItem;
 }

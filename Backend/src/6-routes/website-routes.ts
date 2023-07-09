@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
 import websiteService from "../5-services/website-service";
+import GeneralSettings from "../4-models/general-settings-model";
 
 const router = express.Router();
 
@@ -43,6 +44,17 @@ router.get("/website/headerLine", async (request: Request, response: Response, n
         response.json(headerLine);
     }
     catch (err: any) {
+        next(err);
+    }
+});
+
+// GET http://localhost:4000/api/website/layout/:layoutId([0-9]+)
+router.get("/website/layout/:layoutId([0-9]+)", async (request: Request, response: Response, next: NextFunction) => {
+    try {
+        const layout = await websiteService.getLayout(+request.params.layoutId);
+        response.json(layout);
+    }
+    catch(err: any) {
         next(err);
     }
 });

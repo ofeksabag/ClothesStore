@@ -72,7 +72,7 @@ router.post("/admin/discounts", verifyAdmin, async (request: Request, response: 
 });
 
 // PUT http://localhost:4000/api/admin/website/generalSettings/:layoutId
-router.put("/admin/website/generalSettings/:layoutId([0-9]+)", verifyAdmin, async (request: Request, response: Response, next: NextFunction) => {
+router.put("/admin/website/generalSettings/:layoutId([0-9]+)", async (request: Request, response: Response, next: NextFunction) => {
     try {
         request.body.layoutId = +request.params.layoutId;
         const generalSettings = new GeneralSettings(request.body);

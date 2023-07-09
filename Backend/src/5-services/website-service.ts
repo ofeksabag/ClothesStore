@@ -1,4 +1,7 @@
+import { OkPacket } from "mysql";
 import dal from "../2-utils/dal";
+import GeneralSettings from "../4-models/general-settings-model";
+import { ResourceNotFoundError } from "../4-models/client-errors";
 
 async function getWebsiteName(): Promise<string> {
     const sql = "SELECT websiteName FROM layout";
@@ -24,9 +27,16 @@ async function getHeaderLine(): Promise<string> {
     return headerLine;
 }
 
+async function getLayout(layoutId: number): Promise<GeneralSettings> {
+    const sql = "SELECT * FROM layout WHERE layoutId = ?";
+    const layout = await dal.execute(sql, layoutId);
+    return layout;
+}
+
 export default {
     getWebsiteName,
     getWebsiteDescription,
     getThemeColor,
-    getHeaderLine
+    getHeaderLine,
+    getLayout
 }

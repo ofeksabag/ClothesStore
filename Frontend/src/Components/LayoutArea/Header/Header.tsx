@@ -6,7 +6,7 @@ import "./Header.css";
 function Header(): JSX.Element {
 
     const [websiteDescription, setWebsiteDescription] = useState<string>("");
-    const [themeColor, setThemeColor] = useState<string>("");
+    const [themeColor, setThemeColor] = useState<string>("#EEE");
     const [headerLine, setHeaderLine] = useState<string>("");
 
     useEffect(() => {

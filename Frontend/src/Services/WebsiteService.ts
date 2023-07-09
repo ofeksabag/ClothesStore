@@ -1,5 +1,6 @@
 import axios from "axios";
 import appConfig from "../Utils/AppConfig";
+import GeneralSettings from "../Models/GeneralSettings";
 
 class WebsiteService {
 
@@ -25,6 +26,13 @@ class WebsiteService {
         const response = await axios.get(appConfig.headerLineUrl);
         const headerLine = response.data[0].headerLine;
         return headerLine;
+    }
+
+    public async getLayout(layoutId: number): Promise<GeneralSettings> {
+        const response = await axios.get<GeneralSettings[]>(appConfig.websiteLayoutUrl + layoutId);
+        const layouts = response.data;
+        const layout = layouts[0];
+        return layout;
     }
 
 }

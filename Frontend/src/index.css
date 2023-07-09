@@ -63,7 +63,7 @@ a {
     color: #323232;
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1000px) {
 
     .Menu {
         width: 100%;
@@ -215,6 +215,11 @@ a {
     .Statistics > .PageBox > .Graphs > .SmallGraphs > .Pie {
         margin: 10px 0 0 0;
         width: 100%;
+    }
+
+    .Statistics > .PageBox > .Graphs {
+        width: 100%;
+        display: block;
     }
 
 }
